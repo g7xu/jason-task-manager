@@ -113,6 +113,12 @@ Tasks data source properties:
   for self-relations, add ONE side only (two `DUAL` statements create duplicate columns).
 - **Checkbox values** in updates use `__YES__` / `__NO__`; properties literally named `id`/`url`
   need a `userDefined:` prefix.
+- **A sort on a board disables drag-and-drop.** With any `SORT BY` active, Notion locks card
+  order to the sort, so cards can't be dragged. Board views must have **no sort** (group-by uses
+  manual order) for Kanban dragging to work. Keep Priority etc. as a shown card property instead.
+- **Inline databases lazy-render on page load** — a board may appear blank until the user switches
+  tabs (a Notion client quirk, not fixable via API). A **full-page** (non-inline) database avoids
+  this. Trade-off: inline = on-page but occasionally needs a tab-nudge; full-page = always renders.
 - **Never embed a view as an API-created linked database.** Linked-view blocks made with
   `notion-create-view` + `parent_page_id` render unreliably in the Notion client ("Something went
   wrong" — the **board** worst of all). To show a database on a page, make the **database itself
