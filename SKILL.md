@@ -18,8 +18,8 @@ A single Notion page, **Task Command Center**, holding two databases and two emb
 ```
 📋 Task Command Center  (page)
 ├── Intro + daily-ritual + well-formed-task guidance
-├── 📋 Tasks      (database, INLINE)  → Board · List · Calendar · Today & Overdue tabs
-└── 🌙 Daily Log  (database)          → one entry per day
+├── 📋 Tasks      (database, full-page — click to open)  → Board · List · Calendar · Today & Overdue
+└── 🌙 Daily Log  (database)                             → one entry per day
 ```
 
 Full schema, view configs, the template row, and rebuild steps:
@@ -119,8 +119,9 @@ Tasks data source properties:
 - **Inline databases lazy-render on page load** — a board may appear blank until the user switches
   tabs (a Notion client quirk, not fixable via API). A **full-page** (non-inline) database avoids
   this. Trade-off: inline = on-page but occasionally needs a tab-nudge; full-page = always renders.
+  **Tasks is kept full-page** for reliability — board renders every load and cards drag.
 - **Never embed a view as an API-created linked database.** Linked-view blocks made with
   `notion-create-view` + `parent_page_id` render unreliably in the Notion client ("Something went
   wrong" — the **board** worst of all). To show a database on a page, make the **database itself
   inline** via `notion-update-data-source` `is_inline: true`. If an extra linked view is wanted,
-  create it by hand in the Notion UI (`/linked`). The Tasks database is set inline for this reason.
+  create it by hand in the Notion UI (`/linked`).

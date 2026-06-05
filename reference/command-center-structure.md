@@ -9,14 +9,14 @@ This is what the Notion **Task Command Center** should look like. Use it to **ve
 ```
 📋 Task Command Center  (page — command_center_page_id)
 ├── Intro + "🔁 Daily ritual" + "✍️ Anatomy of a well-formed task" guidance
-├── 📋 Tasks      (database, INLINE — tasks_database_id / tasks_data_source_id)
+├── 📋 Tasks      (database, full-page — tasks_database_id / tasks_data_source_id)
 │      tabs: Board · List · Calendar · Today & Overdue · (Default table)
 └── 🌙 Daily Log  (database — daily_log_database_id / daily_log_data_source_id)
 ```
 
-> ⚠️ The Tasks database is set **inline** (`is_inline: true`) so its Board renders on the page
-> reliably. Do **not** add API-created linked-view embeds of it — those render unreliably in the
-> Notion client ("Something went wrong", board worst of all). See SKILL.md §5.
+> ⚠️ Tasks is a **full-page** database (click to open) — deliberately **not** inline and **not** an
+> API-created linked-view embed. Inline boards lazy-render (blank until a tab-switch) and API-made
+> linked embeds crack outright; full-page renders reliably and cards drag. See SKILL.md §5.
 
 ## Tasks database
 
@@ -65,9 +65,9 @@ If the page/databases don't exist:
 
 1. `notion-create-pages` → the Command Center landing page.
 2. `notion-create-database` → Tasks and Daily Log with the schemas above.
-3. `notion-create-view` → the Tasks views (Board/List/Calendar/Today & Overdue).
-   Then set the Tasks database inline (`is_inline: true`) so it renders on the landing page — do
-   NOT use API-created linked-view embeds.
+3. `notion-create-view` → the Tasks views (Board/List/Calendar/Today & Overdue). Keep the database
+   **full-page** (not inline, no API-created linked embeds) — those render unreliably; the user
+   clicks into Tasks from the landing page. Board views must have **no sort** (so cards can drag).
 4. Create the template row.
 5. Write every new ID into `config.local.json`.
 
