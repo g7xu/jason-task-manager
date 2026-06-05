@@ -1,6 +1,6 @@
 ---
 name: jason-task-manager
-description: Jason's personal task-management skill for his Notion "Task Command Center". Use when he says "good morning", "daily update", "plan my day", "end of day"/"wrap up", or asks to add, import, reschedule, or review tasks. Enforces his well-formed-task framework (outcome-first, atomic, verb-led title, measurable Done-when) and runs the morning-plan and end-of-day-review rituals.
+description: Jason's personal task-management skill for his Notion "Task Command Center". Use when he says "good morning", "daily update", "plan my day", "end of day"/"wrap up", asks to add, import, reschedule, or review tasks, or asks to "check/verify/audit my task command center" (drift check + repair). Enforces his well-formed-task framework (outcome-first, atomic, verb-led title, measurable Done-when) and runs the morning-plan and end-of-day-review rituals.
 ---
 
 # Jason's Task Manager
@@ -74,7 +74,32 @@ Summary:
   `notion-create-pages` into the Tasks data source, mapping: `p1..p4` → `P1..P4`, due date →
   **Due**, project/label → **Project**, and infer a **Done-when** where obvious.
 
-## 4. Schema & gotchas
+## 4. Verify & repair the setup
+
+Triggers: "check my task command center", "verify my setup", "audit my tasks".
+
+Audit the live Notion against `reference/command-center-structure.md`:
+
+1. Load IDs from `config.local.json`.
+2. `notion-fetch` the **Tasks** data source — confirm every expected property exists with the
+   right type/options, and that the **Board / List / Calendar / Today & Overdue** views exist and
+   match their specified config (grouping, sorts, filters).
+3. `notion-fetch` the **Daily Log** data source — confirm its properties.
+4. `notion-fetch` the **Command Center page** — confirm both databases, the two embedded views,
+   and the 🧱 template row are present.
+5. Report a checklist grouped by item: ✅ ok · ⚠️ drifted · ❌ missing.
+
+Then offer to **repair** (ask before changing anything):
+
+- Missing/renamed property → `notion-update-data-source` `ADD COLUMN` / `RENAME COLUMN`.
+- Missing or misconfigured view → `notion-create-view` / `notion-update-view` per spec.
+- Stale **Today & Overdue** filter → refresh to today's literal date.
+- Missing template row → recreate it.
+
+**Never delete data to "fix" drift.** Flag unexpected extra properties/views/rows and let the
+user decide. Make additive repairs by default; confirm before any rename or removal.
+
+## 5. Schema & gotchas
 
 Tasks data source properties:
 `Task` (title) · `Status` (Not started / In progress / Done) · `Priority` (P1–P4) ·

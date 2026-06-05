@@ -19,6 +19,7 @@ Just talk naturally — the skill triggers on what I say:
 | `end of day` · `wrap up` | Marks finished tasks done, rolls the rest to tomorrow, fills the **End-of-Day Review** |
 | `add a task…` · `I need to do X` | Creates it **well-formed** (see below) |
 | `import these` (paste Todoist/CSV) | Bulk-creates tasks with dates, priorities, and projects mapped |
+| `check my task command center` · `verify my setup` | Audits the live Notion against the spec and offers to fix any drift |
 
 ## 🧱 The "well-formed task" framework
 
