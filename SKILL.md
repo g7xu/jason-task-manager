@@ -113,6 +113,11 @@ Tasks data source properties:
   for self-relations, add ONE side only (two `DUAL` statements create duplicate columns).
 - **Checkbox values** in updates use `__YES__` / `__NO__`; properties literally named `id`/`url`
   need a `userDefined:` prefix.
+- **API-created boards group a status property "by group", not "by option".** `notion-create-view`
+  with `GROUP BY "Status"` produces columns for the status *meta-groups* (To-do/In Progress/Complete)
+  and renders awkwardly; the DSL can't set "by option". **Prefer having the user create the board in
+  the Notion UI** (it groups by option = real Not started/In progress/Done columns), then just
+  `SHOW`/`FILTER`-configure it via the API. Jason's Board is his own UI-made one.
 - **A sort on a board disables drag-and-drop.** With any `SORT BY` active, Notion locks card
   order to the sort, so cards can't be dragged. Board views must have **no sort** (group-by uses
   manual order) for Kanban dragging to work. Keep Priority etc. as a shown card property instead.
