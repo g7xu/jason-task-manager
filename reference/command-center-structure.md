@@ -9,12 +9,14 @@ This is what the Notion **Task Command Center** should look like. Use it to **ve
 ```
 📋 Task Command Center  (page — command_center_page_id)
 ├── Intro + "🔁 Daily ritual" + "✍️ Anatomy of a well-formed task" guidance
-├── 📋 Tasks      (database — tasks_database_id / tasks_data_source_id)
+├── 📋 Tasks      (database, INLINE — tasks_database_id / tasks_data_source_id)
 │      tabs: Board · List · Calendar · Today & Overdue · (Default table)
-├── 🌙 Daily Log  (database — daily_log_database_id / daily_log_data_source_id)
-├── ⟦ embedded Task Board ⟧   (linked view of Tasks, grouped by Status)
-└── ⟦ embedded Calendar  ⟧   (linked view of Tasks, by Due)
+└── 🌙 Daily Log  (database — daily_log_database_id / daily_log_data_source_id)
 ```
+
+> ⚠️ The Tasks database is set **inline** (`is_inline: true`) so its Board renders on the page
+> reliably. Do **not** add API-created linked-view embeds of it — those render unreliably in the
+> Notion client ("Something went wrong", board worst of all). See SKILL.md §5.
 
 ## Tasks database
 
@@ -41,7 +43,7 @@ This is what the Notion **Task Command Center** should look like. Use it to **ve
 | Today & Overdue | list | `FILTER "Due" <= "<today>"`, sort `Priority` ASC (date refreshed each morning) |
 | Default | table | all properties |
 
-Board, List, and the embedded board also carry
+The Board and List views also carry
 `FILTER "Task" != "🧱 Template — Well-formed task (duplicate me)"` so the template row is hidden.
 
 **Template row** — a regular row titled `🧱 Template — Well-formed task (duplicate me)` whose body
@@ -63,8 +65,9 @@ If the page/databases don't exist:
 
 1. `notion-create-pages` → the Command Center landing page.
 2. `notion-create-database` → Tasks and Daily Log with the schemas above.
-3. `notion-create-view` → the Tasks views (Board/List/Calendar/Today & Overdue) and the two
-   embedded linked views on the landing page.
+3. `notion-create-view` → the Tasks views (Board/List/Calendar/Today & Overdue).
+   Then set the Tasks database inline (`is_inline: true`) so it renders on the landing page — do
+   NOT use API-created linked-view embeds.
 4. Create the template row.
 5. Write every new ID into `config.local.json`.
 

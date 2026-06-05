@@ -18,10 +18,8 @@ A single Notion page, **Task Command Center**, holding two databases and two emb
 ```
 📋 Task Command Center  (page)
 ├── Intro + daily-ritual + well-formed-task guidance
-├── 📋 Tasks      (database)  → Board · List · Calendar · Today & Overdue tabs
-├── 🌙 Daily Log  (database)  → one entry per day
-├── ⟦ embedded Task Board ⟧   (Tasks grouped by Status)
-└── ⟦ embedded Calendar  ⟧    (Tasks by Due)
+├── 📋 Tasks      (database, INLINE)  → Board · List · Calendar · Today & Overdue tabs
+└── 🌙 Daily Log  (database)          → one entry per day
 ```
 
 Full schema, view configs, the template row, and rebuild steps:
@@ -115,3 +113,8 @@ Tasks data source properties:
   for self-relations, add ONE side only (two `DUAL` statements create duplicate columns).
 - **Checkbox values** in updates use `__YES__` / `__NO__`; properties literally named `id`/`url`
   need a `userDefined:` prefix.
+- **Never embed a view as an API-created linked database.** Linked-view blocks made with
+  `notion-create-view` + `parent_page_id` render unreliably in the Notion client ("Something went
+  wrong" — the **board** worst of all). To show a database on a page, make the **database itself
+  inline** via `notion-update-data-source` `is_inline: true`. If an extra linked view is wanted,
+  create it by hand in the Notion UI (`/linked`). The Tasks database is set inline for this reason.
