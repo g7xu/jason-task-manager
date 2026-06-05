@@ -9,14 +9,14 @@ This is what the Notion **Task Command Center** should look like. Use it to **ve
 ```
 📋 Task Command Center  (page — command_center_page_id)
 ├── Intro + "🔁 Daily ritual" + "✍️ Anatomy of a well-formed task" guidance
-├── 📋 Tasks      (database, full-page — tasks_database_id / tasks_data_source_id)
+├── 📋 Tasks      (database, INLINE — tasks_database_id / tasks_data_source_id)
 │      tabs: Board · List · Calendar · Today & Overdue · (Default table)
 └── 🌙 Daily Log  (database — daily_log_database_id / daily_log_data_source_id)
 ```
 
-> ⚠️ Tasks is a **full-page** database (click to open) — deliberately **not** inline and **not** an
-> API-created linked-view embed. Inline boards lazy-render (blank until a tab-switch) and API-made
-> linked embeds crack outright; full-page renders reliably and cards drag. See SKILL.md §5.
+> ⚠️ Tasks is **inline** on the Command Center page (Jason's choice) — it may need a one-time
+> tab-nudge to paint the board on load. Do **not** replace it with an API-created linked-view embed
+> (those crack). The working **Board** is Jason's UI-made *by-option* view. See SKILL.md §5.
 
 ## Tasks database
 
