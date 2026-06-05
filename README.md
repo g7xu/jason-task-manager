@@ -1,8 +1,8 @@
-# 🗂️ task-manager
+# 🗂️ jason-task-manager
 
-A personal [Claude Code skill](https://docs.claude.com/en/docs/claude-code/skills) that turns my
-Notion into a disciplined task system. Claude auto-loads it whenever I talk about my tasks, then
-captures every to-do in a consistent, **well-formed** shape and runs my daily planning rituals.
+A [Claude Code skill](https://docs.claude.com/en/docs/claude-code/skills) **I (Jason) built** to
+run my own Notion task system. Claude auto-loads it whenever I talk about my tasks, then captures
+every to-do in a consistent, **well-formed** shape and runs my daily planning rituals.
 
 > Built on a Notion **Task Command Center** (Tasks + Daily Log databases with Board / List /
 > Calendar views) and the `claude.ai` Notion connector.
@@ -50,13 +50,13 @@ Depends on: Finalize headcount plan
 Clone into your Claude Code skills directory (the folder name becomes the skill name):
 
 ```bash
-git clone git@github.com:g7xu/task-manager.git ~/.claude/skills/task-manager
+git clone git@github.com:g7xu/jason-task-manager.git ~/.claude/skills/jason-task-manager
 ```
 
 Add your Notion IDs (this file is git-ignored — your IDs never leave your machine):
 
 ```bash
-cd ~/.claude/skills/task-manager
+cd ~/.claude/skills/jason-task-manager
 cp config.example.json config.local.json
 # edit config.local.json with your real IDs
 ```
@@ -67,7 +67,7 @@ cp config.example.json config.local.json
 ## 📁 Layout
 
 ```
-task-manager/
+jason-task-manager/
 ├── SKILL.md                  # triggers + workflow logic (what Claude loads)
 ├── config.example.json       # placeholder IDs (committed, public-safe)
 ├── config.local.json         # your real IDs (git-ignored, local only)
@@ -88,7 +88,7 @@ task-manager/
 ## 🔧 Maintaining
 
 ```bash
-cd ~/.claude/skills/task-manager
+cd ~/.claude/skills/jason-task-manager
 # edit SKILL.md or the reference/ files
 git add -A && git commit -m "tweak workflow" && git push
 ```

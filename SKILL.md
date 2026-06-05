@@ -1,9 +1,11 @@
 ---
-name: task-manager
-description: Manage the user's personal tasks in their Notion "Task Command Center". Use when they say "good morning", "daily update", "plan my day", "end of day"/"wrap up", or ask to add, import, reschedule, or review tasks. Enforces their well-formed-task framework (outcome-first, atomic, verb-led title, measurable Done-when) and runs the morning-plan and end-of-day-review rituals.
+name: jason-task-manager
+description: Jason's personal task-management skill for his Notion "Task Command Center". Use when he says "good morning", "daily update", "plan my day", "end of day"/"wrap up", or asks to add, import, reschedule, or review tasks. Enforces his well-formed-task framework (outcome-first, atomic, verb-led title, measurable Done-when) and runs the morning-plan and end-of-day-review rituals.
 ---
 
-# Task Manager
+# Jason's Task Manager
+
+> A Claude Code skill Jason built to run his own Notion task system.
 
 This skill manages the user's tasks in their Notion **Task Command Center** via the
 `claude.ai Notion` MCP tools (`notion-fetch`, `notion-create-pages`,
