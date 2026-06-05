@@ -11,6 +11,23 @@ This skill manages the user's tasks in their Notion **Task Command Center** via 
 `claude.ai Notion` MCP tools (`notion-fetch`, `notion-create-pages`,
 `notion-update-page`, `notion-update-view`, `notion-update-data-source`, `notion-search`).
 
+## What the Task Command Center looks like
+
+A single Notion page, **Task Command Center**, holding two databases and two embedded views:
+
+```
+📋 Task Command Center  (page)
+├── Intro + daily-ritual + well-formed-task guidance
+├── 📋 Tasks      (database)  → Board · List · Calendar · Today & Overdue tabs
+├── 🌙 Daily Log  (database)  → one entry per day
+├── ⟦ embedded Task Board ⟧   (Tasks grouped by Status)
+└── ⟦ embedded Calendar  ⟧    (Tasks by Due)
+```
+
+Full schema, view configs, the template row, and rebuild steps:
+`reference/command-center-structure.md`. Use it to verify, repair, or rebuild the structure —
+then write any new IDs into `config.local.json`.
+
 ## 0. Load config first
 
 All Notion IDs live in **`config.local.json`** (git-ignored, machine-specific).

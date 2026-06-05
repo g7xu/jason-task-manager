@@ -72,8 +72,9 @@ jason-task-manager/
 ├── config.example.json       # placeholder IDs (committed, public-safe)
 ├── config.local.json         # your real IDs (git-ignored, local only)
 ├── reference/
-│   ├── well-formed-task.md    # the framework + body template + examples
-│   └── daily-ritual.md        # morning / end-of-day step-by-step
+│   ├── command-center-structure.md  # what the Notion setup should look like
+│   ├── well-formed-task.md          # the framework + body template + examples
+│   └── daily-ritual.md              # morning / end-of-day step-by-step
 └── README.md
 ```
 
