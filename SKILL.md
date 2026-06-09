@@ -138,3 +138,8 @@ Tasks data source properties:
   can show blank until you switch tabs.)
 - **Embed lists, not boards, via the API.** API-made board views still group "by group" (see above),
   so embed **list** linked views; add a board to the dashboard via the UI `/linked` if wanted.
+- **You CANNOT rename a linked-view embed via the API.** A linked-database block's title maps to the
+  **shared source database** — setting it (e.g. via `update_content` on the `<database>` tag)
+  renames the real Tasks DB, not the embed. (Learned the hard way 2026-06-09: it renamed "Tasks" →
+  "📥 Inbox".) Per-embed titles are **UI-only** (click the embed's title in Notion). API workaround:
+  add a markdown heading above the embed as a label.
