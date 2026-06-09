@@ -141,5 +141,6 @@ Tasks data source properties:
 - **You CANNOT rename a linked-view embed via the API.** A linked-database block's title maps to the
   **shared source database** — setting it (e.g. via `update_content` on the `<database>` tag)
   renames the real Tasks DB, not the embed. (Learned the hard way 2026-06-09: it renamed "Tasks" →
-  "📥 Inbox".) Per-embed titles are **UI-only** (click the embed's title in Notion). API workaround:
-  add a markdown heading above the embed as a label.
+  "📥 Inbox".) Per-embed titles are **UI-only**. **Best fix (Jason's find):** in the UI, toggle OFF
+  the embed's **"Show database title"** → Notion then displays the **view name** (📅 Today / 🗓️ This
+  Week / 📥 Inbox) instead of the source DB name. No API title-setting, ever.
